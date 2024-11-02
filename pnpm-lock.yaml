@@ -259,112 +259,6 @@ importers:
         specifier: ^4.19.1
         version: 4.19.1
 
-  pages/content:
-    dependencies:
-      '@extension/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
-      '@extension/storage':
-        specifier: workspace:*
-        version: link:../../packages/storage
-    devDependencies:
-      '@extension/hmr':
-        specifier: workspace:*
-        version: link:../../packages/hmr
-      '@extension/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
-      '@extension/vite-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-config
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
-
-  pages/content-runtime:
-    devDependencies:
-      '@extension/hmr':
-        specifier: workspace:*
-        version: link:../../packages/hmr
-      '@extension/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
-      '@extension/vite-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-config
-
-  pages/content-ui:
-    dependencies:
-      '@extension/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
-      '@extension/storage':
-        specifier: workspace:*
-        version: link:../../packages/storage
-      '@extension/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-    devDependencies:
-      '@extension/hmr':
-        specifier: workspace:*
-        version: link:../../packages/hmr
-      '@extension/tailwindcss-config':
-        specifier: workspace:*
-        version: link:../../packages/tailwind-config
-      '@extension/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
-      '@extension/vite-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-config
-      concurrently:
-        specifier: ^9.0.1
-        version: 9.0.1
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
-
-  pages/devtools:
-    dependencies:
-      '@extension/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
-    devDependencies:
-      '@extension/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
-      '@extension/vite-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-config
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
-
-  pages/devtools-panel:
-    dependencies:
-      '@extension/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
-      '@extension/storage':
-        specifier: workspace:*
-        version: link:../../packages/storage
-    devDependencies:
-      '@extension/tailwindcss-config':
-        specifier: workspace:*
-        version: link:../../packages/tailwind-config
-      '@extension/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
-      '@extension/vite-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-config
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
-      postcss-load-config:
-        specifier: ^6.0.1
-        version: 6.0.1(jiti@1.21.6)(postcss@8.4.47)(tsx@4.19.1)(yaml@2.5.1)
-
   pages/new-tab:
     dependencies:
       '@extension/i18n':
@@ -399,95 +293,14 @@ importers:
         specifier: 1.79.4
         version: 1.79.4
 
-  pages/options:
-    dependencies:
-      '@extension/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
-      '@extension/storage':
-        specifier: workspace:*
-        version: link:../../packages/storage
-      '@extension/ui':
-        specifier: workspace:*
-        version: link:../../packages/ui
-    devDependencies:
-      '@extension/tailwindcss-config':
-        specifier: workspace:*
-        version: link:../../packages/tailwind-config
-      '@extension/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
-      '@extension/vite-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-config
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
-      postcss-load-config:
-        specifier: ^6.0.1
-        version: 6.0.1(jiti@1.21.6)(postcss@8.4.47)(tsx@4.19.1)(yaml@2.5.1)
-
-  pages/popup:
-    dependencies:
-      '@extension/content-runtime-script':
-        specifier: workspace:*
-        version: link:../content-runtime
-      '@extension/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
-      '@extension/storage':
-        specifier: workspace:*
-        version: link:../../packages/storage
-    devDependencies:
-      '@extension/tailwindcss-config':
-        specifier: workspace:*
-        version: link:../../packages/tailwind-config
-      '@extension/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
-      '@extension/vite-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-config
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
-      postcss-load-config:
-        specifier: ^6.0.1
-        version: 6.0.1(jiti@1.21.6)(postcss@8.4.47)(tsx@4.19.1)(yaml@2.5.1)
-
-  pages/side-panel:
-    dependencies:
-      '@extension/shared':
-        specifier: workspace:*
-        version: link:../../packages/shared
-      '@extension/storage':
-        specifier: workspace:*
-        version: link:../../packages/storage
-    devDependencies:
-      '@extension/tailwindcss-config':
-        specifier: workspace:*
-        version: link:../../packages/tailwind-config
-      '@extension/tsconfig':
-        specifier: workspace:*
-        version: link:../../packages/tsconfig
-      '@extension/vite-config':
-        specifier: workspace:*
-        version: link:../../packages/vite-config
-      cross-env:
-        specifier: ^7.0.3
-        version: 7.0.3
-      postcss-load-config:
-        specifier: ^6.0.1
-        version: 6.0.1(jiti@1.21.6)(postcss@8.4.47)(tsx@4.19.1)(yaml@2.5.1)
-
   tests/e2e:
     devDependencies:
       '@extension/tsconfig':
         specifier: workspace:*
         version: link:../../packages/tsconfig
       '@wdio/cli':
-        specifier: ^9.1.2
-        version: 9.1.2
+        specifier: ^9.2.8
+        version: 9.2.8
       '@wdio/globals':
         specifier: ^9.1.2
         version: 9.1.2(@wdio/logger@9.1.0)
@@ -1313,17 +1126,14 @@ packages:
     peerDependencies:
       vite: ^4 || ^5
 
-  '@vitest/pretty-format@2.0.5':
-    resolution: {integrity: sha512-h8k+1oWHfwTkyTkb9egzwNMfJAEx4veaPSnMeKbVSjp4euqGSbQlm5+6VHwTr7u4FJslVVsUG5nopCaAYdOmSQ==}
+  '@vitest/pretty-format@2.1.4':
+    resolution: {integrity: sha512-L95zIAkEuTDbUX1IsjRl+vyBSLh3PwLLgKpghl37aCK9Jvw0iP+wKwIFhfjdUtA2myLgjrG6VU6JCFLv8q/3Ww==}
 
-  '@vitest/snapshot@1.6.0':
-    resolution: {integrity: sha512-+Hx43f8Chus+DCmygqqfetcAZrDJwvTj0ymqjQq4CvmpKFSTVteEOBzCusu1x2tt4OJcvBflyHUE0DZSLgEMtQ==}
+  '@vitest/snapshot@2.1.4':
+    resolution: {integrity: sha512-3Kab14fn/5QZRog5BPj6Rs8dc4B+mim27XaKWFWHWA87R56AKjHTGcBFKpvZKDzC4u5Wd0w/qKsUIio3KzWW4Q==}
 
-  '@vitest/snapshot@2.0.5':
-    resolution: {integrity: sha512-SgCPUeDFLaM0mIUHfaArq8fD2WbaXG/zVXjRupthYfYGzc8ztbFbu6dUNOblBG7XLMR1kEhS/DNnfCZ2IhdDew==}
-
-  '@wdio/cli@9.1.2':
-    resolution: {integrity: sha512-TPbl+yyKIFJaAZFcIUBaDor4Lf4rj1FmG1LfKsFb878mgT5IMui9nb/DGpLaaVM4Q3Kmaxip9nzfwYS37OQGnQ==}
+  '@wdio/cli@9.2.8':
+    resolution: {integrity: sha512-4plnNS6bm8yH50hBmJ3veTuk8sgWVu2iKFaEBHTmzjsrSd+nsIP4RSUAhIVy0+Msl/C3K39mHd5Paz618Es1qw==}
     engines: {node: '>=18.20.0'}
     hasBin: true
 
@@ -1331,8 +1141,16 @@ packages:
     resolution: {integrity: sha512-M8jDFgTxOeljv5M75em7oCu2cV16jHWH6HWj5CD3ZNzaMeHf+EkIuHNyREJjt8PCnssehzXD26TF63tGPHdksA==}
     engines: {node: '>=18.20.0'}
 
+  '@wdio/config@9.2.8':
+    resolution: {integrity: sha512-EGMmBPGJbz6RmgMjebRWkWu3fGyeTIRcusF4UA4f2tiUEKY8nbzUO/ZyDjVQNR+YVB40q0jcqAqpszYRrIzzeg==}
+    engines: {node: '>=18.20.0'}
+
   '@wdio/globals@9.1.2':
     resolution: {integrity: sha512-1qqTZgae3WXOboUO7lqzz7Y75q6n7uKq1W9jn2wrvWByOQ9rVUM9PCKQGhmjVoQRcqXBOMAazqNrRK6Xy1cqAg==}
+    engines: {node: '>=18.20.0'}
+
+  '@wdio/globals@9.2.8':
+    resolution: {integrity: sha512-FBklmM2mOgMPenu5SrTA++RJCjvyUFlDxpDcVA0drh5pRfvD+DFAE40yi4+w6ji42tdTHsiB2KFkM4wJL0fXIA==}
     engines: {node: '>=18.20.0'}
 
   '@wdio/local-runner@9.1.2':
@@ -1347,12 +1165,19 @@ packages:
     resolution: {integrity: sha512-1Rfg9VCy87I9IrViA1ned1Rqa66JwhCzdEo8rA8T3Ro6lBfOEwDbK1XW8ETKLWcweddzGeFalfVnvUlNgPmFdA==}
     engines: {node: '>=18.20.0'}
 
+  '@wdio/logger@9.1.3':
+    resolution: {integrity: sha512-cumRMK/gE1uedBUw3WmWXOQ7HtB6DR8EyKQioUz2P0IJtRRpglMBdZV7Svr3b++WWawOuzZHMfbTkJQmaVt8Gw==}
+    engines: {node: '>=18.20.0'}
+
   '@wdio/mocha-framework@9.1.2':
     resolution: {integrity: sha512-LG8arSVsSNqV61LvyQddmtDuqjeh+mVWhNPSCUi4AjZ2mBC85DTMBbvsIBSDK59DF9Ijd4NLDpRGnPzzgXjbIA==}
     engines: {node: '>=18.20.0'}
 
   '@wdio/protocols@9.0.8':
     resolution: {integrity: sha512-xRH54byFf623/w/KW62xkf/C2mGyigSfMm+UT3tNEAd5ZA9X2VAWQWQBPzdcrsck7Fxk4zlQX8Kb34RSs7Cy4Q==}
+
+  '@wdio/protocols@9.2.2':
+    resolution: {integrity: sha512-0GMUSHCbYm+J+rnRU6XPtaUgVCRICsiH6W5zCXpePm3wLlbmg/mvZ+4OnNErssbpIOulZuAmC2jNmut2AEfWSw==}
 
   '@wdio/repl@9.0.8':
     resolution: {integrity: sha512-3iubjl4JX5zD21aFxZwQghqC3lgu+mSs8c3NaiYYNCC+IT5cI/8QuKlgh9s59bu+N3gG988jqMJeCYlKuUv/iw==}
@@ -1374,8 +1199,16 @@ packages:
     resolution: {integrity: sha512-mROY3xSBBNujSH0Opo3Sfi1QUm3l7HbVQ8/bDmPCwHXOeYlx0q14rLyyZI3LrN5uJ0KPpuNrVgE36NFaG8+xxw==}
     engines: {node: '>=18.20.0'}
 
+  '@wdio/types@9.2.2':
+    resolution: {integrity: sha512-nHZ9Ne9iRQFJ1TOYKUn4Fza69IshTTzk6RYmSZ51ImGs9uMZu0+S0Jm9REdly+VLN3FzxG6g2QSe0/F3uNVPdw==}
+    engines: {node: '>=18.20.0'}
+
   '@wdio/utils@9.1.2':
     resolution: {integrity: sha512-8APCnvJjHkG/6KwXtrPhEYR29Ph+vs1Gx2mGRnbYXNgbworfPEIZETpienHXhDEbINdqSb7EY5LkapIjP7nKbg==}
+    engines: {node: '>=18.20.0'}
+
+  '@wdio/utils@9.2.8':
+    resolution: {integrity: sha512-rKm5FXkpsCyeqh8tdirtRUHvgNytWNMiaVKdctsvKOJvqnDVPAAQcz9Wmgo7bSwoLwtSHcDaRoxY7olV7J4QnA==}
     engines: {node: '>=18.20.0'}
 
   '@webassemblyjs/ast@1.12.1':
@@ -1797,11 +1630,6 @@ packages:
 
   concat-map@0.0.1:
     resolution: {integrity: sha512-/Srv4dswyQNBfohGpz9o6Yb3Gz3SrUDqBH5rTuhGR7ahtlbYKnVxw2bCFMRljaA7EXHaXZ8wsHdodFvbkhKmqg==}
-
-  concurrently@9.0.1:
-    resolution: {integrity: sha512-wYKvCd/f54sTXJMSfV6Ln/B8UrfLBKOYa+lzc6CHay3Qek+LorVSBdMVfyewFhRbH0Rbabsk4D+3PL/VjQ5gzg==}
-    engines: {node: '>=18'}
-    hasBin: true
 
   confusing-browser-globals@1.0.11:
     resolution: {integrity: sha512-JsPKdmh8ZkmnHxDk55FZ1TqVLvEQTvoByJZRN9jzI0UjxK/QgAmsphz7PGtqgPieQZ/CQcHWXCR7ATDNhGe+YA==}
@@ -2545,6 +2373,9 @@ packages:
   htmlfy@0.2.1:
     resolution: {integrity: sha512-HoomFHQ3av1uhq+7FxJTq4Ns0clAD+tGbQNrSd0WFY3UAjjUk6G3LaWEqdgmIXYkY4pexZiyZ3ykZJhQlM0J5A==}
 
+  htmlfy@0.3.2:
+    resolution: {integrity: sha512-FsxzfpeDYRqn1emox9VpxMPfGjADoUmmup8D604q497R0VNxiXs4ZZTN2QzkaMA5C9aHGUoe1iQRVSm+HK9xuA==}
+
   htmlparser2@9.1.0:
     resolution: {integrity: sha512-5zfg6mHUoaer/97TxnGpxmbR7zJtPwIYFMZ/H5ucTlPZhKvtum05yiPK3Mgai3a0DyVxv7qYqoweaEd2nrYQzQ==}
 
@@ -2988,6 +2819,9 @@ packages:
 
   magic-string@0.30.11:
     resolution: {integrity: sha512-+Wri9p0QHMy+545hKww7YAu5NyzF8iomPL/RQazugQ9+Ez4Ic3mERMd8ZTX5rfK944j+560ZJi8iAwgak1Ac7A==}
+
+  magic-string@0.30.12:
+    resolution: {integrity: sha512-Ea8I3sQMVXr8JhN4z+H/d8zwo+tYDgHE9+5G4Wnrwhs0gaK9fXTKx0Tw5Xwsd/bCPTTZNRAdpyzvoeORe9LYpw==}
 
   make-error@1.3.6:
     resolution: {integrity: sha512-s8UhlNe7vPKomQhC1qFelMokr/Sc3AgNbso3n74mVPA5LTZwkB9NlXf4XPamLxJE8h0gh73rM94xvwRT2CVInw==}
@@ -3599,9 +3433,6 @@ packages:
     resolution: {integrity: sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==}
     engines: {node: '>=8'}
 
-  shell-quote@1.8.1:
-    resolution: {integrity: sha512-6j1W9l1iAs/4xYBI1SYOVZyFcCis9b4KCLQ8fgAGG07QvzaRLVVRQvAy85yNmmZSjYjg4MWh4gNvlPujU/5LpA==}
-
   side-channel@1.0.6:
     resolution: {integrity: sha512-fDW/EZ6Q9RiO8eFG8Hj+7u/oW+XrPTIChwCOM2+th2A6OblDtYYIpve9m+KvI9Z4C9qSEXlaGR6bTEYHReuglA==}
     engines: {node: '>= 0.4'}
@@ -3848,10 +3679,6 @@ packages:
     resolution: {integrity: sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ==}
     engines: {node: '>=8.0'}
 
-  tree-kill@1.2.2:
-    resolution: {integrity: sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==}
-    hasBin: true
-
   ts-api-utils@1.3.0:
     resolution: {integrity: sha512-UQMIo7pb8WRomKR1/+MFVLTroIvDVtMX3K6OUir8ynLyzB8Jeriont2bTAtmNPa1ekAgN7YPDyf6V+ygrdU+eQ==}
     engines: {node: '>=16'}
@@ -4073,8 +3900,21 @@ packages:
     resolution: {integrity: sha512-NjeYVTCSMwQrd+EDpSSB8YnSNzYeEPU2IoJhvjaXUwTEhoaIvz6x6fM4UqCbm/ph8lZ1uWux43fqIcfDzFQl5Q==}
     engines: {node: '>=18.20.0'}
 
+  webdriver@9.2.8:
+    resolution: {integrity: sha512-40NtUC1zME9tPHNfZv6ETSE3+aE75qZuKjbVAA0gj02AkO1Nl3yJmf5RLdaLLfIQ2WlrbRP1g8KXlkiiVCmakg==}
+    engines: {node: '>=18.20.0'}
+
   webdriverio@9.1.2:
     resolution: {integrity: sha512-Yk/OmxUmse6YVBMr+iM5zH3LKiy07cJQsq19qL2Zj29+2I3b8kK8uGxx8+DhqYF/A/MVwHUFxACzQDYsdW6pjw==}
+    engines: {node: '>=18.20.0'}
+    peerDependencies:
+      puppeteer-core: ^22.3.0
+    peerDependenciesMeta:
+      puppeteer-core:
+        optional: true
+
+  webdriverio@9.2.8:
+    resolution: {integrity: sha512-LQa7DlwatyWc0WmBqdklrSzi43SLdva5q5CUFOIXtzhdngsjsqv9w2TxZnlyo2BTf/f/BbQ1L4FgiWADuTAZ/w==}
     engines: {node: '>=18.20.0'}
     peerDependencies:
       puppeteer-core: ^22.3.0
@@ -4923,32 +4763,26 @@ snapshots:
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  '@vitest/pretty-format@2.0.5':
+  '@vitest/pretty-format@2.1.4':
     dependencies:
       tinyrainbow: 1.2.0
 
-  '@vitest/snapshot@1.6.0':
+  '@vitest/snapshot@2.1.4':
     dependencies:
-      magic-string: 0.30.11
-      pathe: 1.1.2
-      pretty-format: 29.7.0
-
-  '@vitest/snapshot@2.0.5':
-    dependencies:
-      '@vitest/pretty-format': 2.0.5
-      magic-string: 0.30.11
+      '@vitest/pretty-format': 2.1.4
+      magic-string: 0.30.12
       pathe: 1.1.2
 
-  '@wdio/cli@9.1.2':
+  '@wdio/cli@9.2.8':
     dependencies:
       '@types/node': 20.16.10
-      '@vitest/snapshot': 1.6.0
-      '@wdio/config': 9.1.2
-      '@wdio/globals': 9.1.2(@wdio/logger@9.1.0)
-      '@wdio/logger': 9.1.0
-      '@wdio/protocols': 9.0.8
-      '@wdio/types': 9.1.2
-      '@wdio/utils': 9.1.2
+      '@vitest/snapshot': 2.1.4
+      '@wdio/config': 9.2.8
+      '@wdio/globals': 9.2.8(@wdio/logger@9.1.3)
+      '@wdio/logger': 9.1.3
+      '@wdio/protocols': 9.2.2
+      '@wdio/types': 9.2.2
+      '@wdio/utils': 9.2.8
       async-exit-hook: 2.0.1
       chalk: 5.3.0
       chokidar: 4.0.1
@@ -4964,7 +4798,7 @@ snapshots:
       read-pkg-up: 10.1.0
       recursive-readdir: 2.2.3
       tsx: 4.19.1
-      webdriverio: 9.1.2
+      webdriverio: 9.2.8
       yargs: 17.7.2
     transitivePeerDependencies:
       - bufferutil
@@ -4984,10 +4818,33 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
+  '@wdio/config@9.2.8':
+    dependencies:
+      '@wdio/logger': 9.1.3
+      '@wdio/types': 9.2.2
+      '@wdio/utils': 9.2.8
+      decamelize: 6.0.0
+      deepmerge-ts: 7.1.1
+      glob: 10.4.5
+      import-meta-resolve: 4.1.0
+    transitivePeerDependencies:
+      - supports-color
+
   '@wdio/globals@9.1.2(@wdio/logger@9.1.0)':
     optionalDependencies:
       expect-webdriverio: 5.0.2(@wdio/globals@9.1.2(@wdio/logger@9.1.0))(@wdio/logger@9.1.0)(webdriverio@9.1.2)
       webdriverio: 9.1.2
+    transitivePeerDependencies:
+      - '@wdio/logger'
+      - bufferutil
+      - puppeteer-core
+      - supports-color
+      - utf-8-validate
+
+  '@wdio/globals@9.2.8(@wdio/logger@9.1.3)':
+    optionalDependencies:
+      expect-webdriverio: 5.0.2(@wdio/globals@9.2.8(@wdio/logger@9.1.3))(@wdio/logger@9.1.3)(webdriverio@9.2.8)
+      webdriverio: 9.2.8
     transitivePeerDependencies:
       - '@wdio/logger'
       - bufferutil
@@ -5025,6 +4882,13 @@ snapshots:
       loglevel-plugin-prefix: 0.8.4
       strip-ansi: 7.1.0
 
+  '@wdio/logger@9.1.3':
+    dependencies:
+      chalk: 5.3.0
+      loglevel: 1.9.2
+      loglevel-plugin-prefix: 0.8.4
+      strip-ansi: 7.1.0
+
   '@wdio/mocha-framework@9.1.2':
     dependencies:
       '@types/mocha': 10.0.7
@@ -5037,6 +4901,8 @@ snapshots:
       - supports-color
 
   '@wdio/protocols@9.0.8': {}
+
+  '@wdio/protocols@9.2.2': {}
 
   '@wdio/repl@9.0.8':
     dependencies:
@@ -5081,11 +4947,33 @@ snapshots:
     dependencies:
       '@types/node': 20.16.10
 
+  '@wdio/types@9.2.2':
+    dependencies:
+      '@types/node': 20.16.10
+
   '@wdio/utils@9.1.2':
     dependencies:
       '@puppeteer/browsers': 2.4.0
       '@wdio/logger': 9.1.0
       '@wdio/types': 9.1.2
+      decamelize: 6.0.0
+      deepmerge-ts: 7.1.1
+      edgedriver: 5.6.1
+      geckodriver: 4.5.0
+      get-port: 7.1.0
+      import-meta-resolve: 4.1.0
+      locate-app: 2.4.43
+      safaridriver: 0.1.2
+      split2: 4.2.0
+      wait-port: 1.1.0
+    transitivePeerDependencies:
+      - supports-color
+
+  '@wdio/utils@9.2.8':
+    dependencies:
+      '@puppeteer/browsers': 2.4.0
+      '@wdio/logger': 9.1.3
+      '@wdio/types': 9.2.2
       decamelize: 6.0.0
       deepmerge-ts: 7.1.1
       edgedriver: 5.6.1
@@ -5587,16 +5475,6 @@ snapshots:
       readable-stream: 4.5.2
 
   concat-map@0.0.1: {}
-
-  concurrently@9.0.1:
-    dependencies:
-      chalk: 4.1.2
-      lodash: 4.17.21
-      rxjs: 7.8.1
-      shell-quote: 1.8.1
-      supports-color: 8.1.1
-      tree-kill: 1.2.2
-      yargs: 17.7.2
 
   confusing-browser-globals@1.0.11: {}
 
@@ -6247,13 +6125,24 @@ snapshots:
 
   expect-webdriverio@5.0.2(@wdio/globals@9.1.2(@wdio/logger@9.1.0))(@wdio/logger@9.1.0)(webdriverio@9.1.2):
     dependencies:
-      '@vitest/snapshot': 2.0.5
+      '@vitest/snapshot': 2.1.4
       '@wdio/globals': 9.1.2(@wdio/logger@9.1.0)
       '@wdio/logger': 9.1.0
       expect: 29.7.0
       jest-matcher-utils: 29.7.0
       lodash.isequal: 4.5.0
       webdriverio: 9.1.2
+
+  expect-webdriverio@5.0.2(@wdio/globals@9.2.8(@wdio/logger@9.1.3))(@wdio/logger@9.1.3)(webdriverio@9.2.8):
+    dependencies:
+      '@vitest/snapshot': 2.1.4
+      '@wdio/globals': 9.2.8(@wdio/logger@9.1.3)
+      '@wdio/logger': 9.1.3
+      expect: 29.7.0
+      jest-matcher-utils: 29.7.0
+      lodash.isequal: 4.5.0
+      webdriverio: 9.2.8
+    optional: true
 
   expect@29.7.0:
     dependencies:
@@ -6397,7 +6286,7 @@ snapshots:
 
   geckodriver@4.5.0:
     dependencies:
-      '@wdio/logger': 9.1.0
+      '@wdio/logger': 9.1.3
       '@zip.js/zip.js': 2.7.52
       decamelize: 6.0.0
       http-proxy-agent: 7.0.2
@@ -6569,6 +6458,8 @@ snapshots:
       lru-cache: 10.4.3
 
   htmlfy@0.2.1: {}
+
+  htmlfy@0.3.2: {}
 
   htmlparser2@9.1.0:
     dependencies:
@@ -7015,6 +6906,10 @@ snapshots:
   lru-cache@7.18.3: {}
 
   magic-string@0.30.11:
+    dependencies:
+      '@jridgewell/sourcemap-codec': 1.5.0
+
+  magic-string@0.30.12:
     dependencies:
       '@jridgewell/sourcemap-codec': 1.5.0
 
@@ -7651,8 +7546,6 @@ snapshots:
 
   shebang-regex@3.0.0: {}
 
-  shell-quote@1.8.1: {}
-
   side-channel@1.0.6:
     dependencies:
       call-bind: 1.0.7
@@ -7947,8 +7840,6 @@ snapshots:
     dependencies:
       is-number: 7.0.0
 
-  tree-kill@1.2.2: {}
-
   ts-api-utils@1.3.0(typescript@5.5.4):
     dependencies:
       typescript: 5.5.4
@@ -8207,6 +8098,22 @@ snapshots:
       - supports-color
       - utf-8-validate
 
+  webdriver@9.2.8:
+    dependencies:
+      '@types/node': 20.16.10
+      '@types/ws': 8.5.12
+      '@wdio/config': 9.2.8
+      '@wdio/logger': 9.1.3
+      '@wdio/protocols': 9.2.2
+      '@wdio/types': 9.2.2
+      '@wdio/utils': 9.2.8
+      deepmerge-ts: 7.1.1
+      ws: 8.18.0
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+
   webdriverio@9.1.2:
     dependencies:
       '@types/node': 20.16.10
@@ -8236,6 +8143,40 @@ snapshots:
       serialize-error: 11.0.3
       urlpattern-polyfill: 10.0.0
       webdriver: 9.1.2
+    transitivePeerDependencies:
+      - bufferutil
+      - supports-color
+      - utf-8-validate
+
+  webdriverio@9.2.8:
+    dependencies:
+      '@types/node': 20.16.10
+      '@types/sinonjs__fake-timers': 8.1.5
+      '@wdio/config': 9.2.8
+      '@wdio/logger': 9.1.3
+      '@wdio/protocols': 9.2.2
+      '@wdio/repl': 9.0.8
+      '@wdio/types': 9.2.2
+      '@wdio/utils': 9.2.8
+      archiver: 7.0.1
+      aria-query: 5.3.2
+      cheerio: 1.0.0
+      css-shorthand-properties: 1.1.2
+      css-value: 0.0.1
+      grapheme-splitter: 1.0.4
+      htmlfy: 0.3.2
+      import-meta-resolve: 4.1.0
+      is-plain-obj: 4.1.0
+      jszip: 3.10.1
+      lodash.clonedeep: 4.5.0
+      lodash.zip: 4.2.0
+      minimatch: 9.0.5
+      query-selector-shadow-dom: 1.0.1
+      resq: 1.11.0
+      rgb2hex: 0.2.5
+      serialize-error: 11.0.3
+      urlpattern-polyfill: 10.0.0
+      webdriver: 9.2.8
     transitivePeerDependencies:
       - bufferutil
       - supports-color
