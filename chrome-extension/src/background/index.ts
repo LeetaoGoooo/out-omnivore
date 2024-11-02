@@ -1,4 +1,9 @@
-import { Message, MessageType, Omnivore2PocketMessage } from '@extension/shared/lib/message/message';
+import {
+  createSnackBarMessage,
+  Message,
+  MessageType,
+  Omnivore2PocketMessage,
+} from '@extension/shared/lib/message/message';
 import { Pocket } from '@src/api/pocket';
 import { RequestFailed } from '@src/api/models/custom-expections';
 import { pocketCodeStorage } from '@extension/storage/lib/impl/pocketStorage';
@@ -19,6 +24,7 @@ chrome.runtime.onMessage.addListener(
             });
           } catch (e) {
             if (e instanceof RequestFailed) {
+              await chrome.runtime.sendMessage(createSnackBarMessage('Auth Failed,please try again!', 'error'));
               return;
             }
           }
@@ -52,14 +58,22 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo) => {
     await chrome.runtime.sendMessage({
       type: MessageType.POCKET_LOGGING,
     });
+    await chrome.runtime.sendMessage(createSnackBarMessage('Logging...', 'info'));
   } catch (e) {
     console.error(e);
   }
   const pocket = new Pocket();
   const code = await pocketCodeStorage.code();
-  const userAccessTokenResponse = await pocket.fetchPocketAccessToken(code!);
-  await pocketCodeStorage.store_token(userAccessTokenResponse.access_token);
-  await chrome.runtime.sendMessage({
-    type: MessageType.POCKET_LOGIN_SUCCESS,
-  });
+  try {
+    const userAccessTokenResponse = await pocket.fetchPocketAccessToken(code!);
+    await pocketCodeStorage.store_token(userAccessTokenResponse.access_token);
+    await chrome.tabs.remove(tabId);
+    await chrome.runtime.sendMessage({
+      type: MessageType.POCKET_LOGIN_SUCCESS,
+    });
+    await chrome.runtime.sendMessage(createSnackBarMessage('Login Successfully!', 'success'));
+  } catch (e) {
+    // @ts-ignore
+    await chrome.runtime.sendMessage(createSnackBarMessage(`Login Failed,error:${e.toString()}`, 'error'));
+  }
 });

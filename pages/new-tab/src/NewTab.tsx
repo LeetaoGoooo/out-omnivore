@@ -1,27 +1,34 @@
 import '@src/NewTab.css';
 import '@src/NewTab.scss';
 import { withErrorBoundary, withSuspense } from '@extension/shared';
-import { AuthButton } from '@src/components/AuthPage';
+
+import { SnackbarProvider, useSnackbar } from 'notistack';
+import { X } from 'lucide-react';
+import { HomePage } from '@src/components/HomePage';
+
 // @ts-ignore
-import omnivore from '@assets/omnivore.svg';
-// @ts-ignore
-import pocket from '@assets/pocket.svg';
+function SnackbarCloseButton({ snackbarKey }) {
+  const { closeSnackbar } = useSnackbar();
+
+  return (
+    <button onClick={() => closeSnackbar(snackbarKey)}>
+      <X color="white" />
+    </button>
+  );
+}
 
 const NewTab = () => {
   return (
-    <div
-      className="flex items-center justify-center w-full flex-col"
-      style={{
-        height: '100vh',
-      }}>
-      <div className="flex items-center w-full justify-center h-full  gap-4">
-        <img src={omnivore} alt="omnivore" className="w-[64px] h-[64px]" />
-        <img src={pocket} alt="pocket" className="w-[64px] h-[64px]" />
-      </div>
-      <div className="flex items-center w-full justify-between">
-        <AuthButton />
-      </div>
-    </div>
+    <SnackbarProvider
+      maxSnack={3}
+      autoHideDuration={3000}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      action={snackbarKey => <SnackbarCloseButton snackbarKey={snackbarKey} />}>
+      <HomePage />
+    </SnackbarProvider>
   );
 };
 

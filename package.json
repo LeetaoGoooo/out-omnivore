@@ -32,6 +32,8 @@
   "dependencies": {
     "@laynezh/vite-plugin-lib-assets": "^0.5.23",
     "eslint-plugin-tailwindcss": "^3.17.4",
+    "lucide-react": "^0.454.0",
+    "notistack": "^3.0.1",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },

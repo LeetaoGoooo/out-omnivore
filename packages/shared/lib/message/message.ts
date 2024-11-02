@@ -1,8 +1,11 @@
+import { VariantType } from 'notistack';
+
 export enum MessageType {
   POCKET_AUTH = 'POCKET_AUTH',
   POCKET_LOGGING = 'POCKET_LOGGING',
   POCKET_LOGIN_SUCCESS = 'POCKET_LOGIN_SUCCESS',
   OMNIVORE_TO_POCKET = 'OMNIVORE_TO_POCKET',
+  SNACKBAR_MESSAGE = 'SNACKBAR_MESSAGE',
 }
 
 interface MessageBase {
@@ -29,4 +32,16 @@ export const createOmnivore2PocketMessage = (payload: OmnivoreItem[]) => ({
   payload: payload,
 });
 
-export type Message = (PocketAuthMessage | Omnivore2PocketMessage) & MessageBase;
+export type SnackBarMessage = {
+  type: MessageType.SNACKBAR_MESSAGE;
+  payload: string;
+  variantType: VariantType;
+};
+
+export const createSnackBarMessage = (text: string, variantType?: VariantType) => ({
+  type: MessageType.SNACKBAR_MESSAGE,
+  payload: text,
+  variantType: variantType,
+});
+
+export type Message = (PocketAuthMessage | Omnivore2PocketMessage | SnackBarMessage) & MessageBase;

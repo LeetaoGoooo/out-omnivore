@@ -2,9 +2,12 @@ import { StorageEnum } from '../base/enums';
 import { createStorage } from '../base/base';
 import type { BaseStorage } from '../base/types';
 
+type PocketState = 'success' | 'failed';
+
 type Pocket = {
   code?: string;
   accessToken?: string;
+  state?: PocketState;
 };
 
 type PocketStorage = BaseStorage<Pocket> & {
@@ -38,6 +41,7 @@ export const pocketCodeStorage: PocketStorage = {
   store_token: async (token: string) => {
     await pocketStorage.set(pocket => {
       pocket.accessToken = token;
+      pocket.state = 'success';
       return pocket;
     });
   },
