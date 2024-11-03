@@ -131,7 +131,7 @@ async function batchAddFileToPockets(payload: Omnivore2PocketMessagePayload) {
   } catch (e) {
     // @ts-ignore
     await chrome.runtime.sendMessage(
-      createSnackBarMessage(`Process ${file.name} Add  Items to Pocket Failed, e: ${e.toString()}`, 'error'),
+      createSnackBarMessage(`Process ${filename} Add  Items to Pocket Failed, e: ${e.toString()}`, 'error'),
     );
   }
 }
