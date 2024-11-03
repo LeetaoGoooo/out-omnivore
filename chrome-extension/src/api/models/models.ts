@@ -19,6 +19,7 @@ export interface PocketItemAdd {
   time?: string;
   title?: string;
   url?: string;
+  action: string;
 }
 
 export interface PocketSendResponse {

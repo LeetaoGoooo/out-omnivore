@@ -1,10 +1,4 @@
-import {
-  PocketItemAdd,
-  PocketSendResponse,
-  UserAccessTokenResponse,
-  UserAuthRequest,
-  UserAuthResponse,
-} from '@src/api/models/models';
+import { PocketItemAdd, PocketSendResponse, UserAccessTokenResponse, UserAuthResponse } from '@src/api/models/models';
 import { RequestFailed } from '@src/api/models/custom-expections';
 
 export class Pocket {
@@ -55,13 +49,18 @@ export class Pocket {
   }
 
   async batchInsertItems(token: string, items: PocketItemAdd[]) {
-    const url = `https://getpocket.com/v3/send?consumer_key=${this.consumerKey}&access_token=${token}&actions=add`;
+    const url = `https://getpocket.com/v3/send`;
     const response = await fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
+        'X-Accept': 'application/json',
       },
-      body: JSON.stringify(items),
+      body: JSON.stringify({
+        consumer_key: this.consumerKey,
+        access_token: token,
+        actions: items,
+      }),
     });
     if (!response || !response.ok) {
       throw new RequestFailed();

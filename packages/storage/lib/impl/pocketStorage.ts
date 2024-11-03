@@ -15,6 +15,7 @@ type PocketStorage = BaseStorage<Pocket> & {
   code: () => Promise<string | undefined>;
   store_token: (token: string) => Promise<void>;
   token: () => Promise<string | undefined>;
+  authed: () => Promise<boolean>;
 };
 
 const pocketStorage = createStorage<Pocket>(
@@ -48,5 +49,9 @@ export const pocketCodeStorage: PocketStorage = {
   token: async () => {
     const store = await pocketStorage.get();
     return store.accessToken;
+  },
+  authed: async () => {
+    const store = await pocketStorage.get();
+    return store.state == 'success';
   },
 };

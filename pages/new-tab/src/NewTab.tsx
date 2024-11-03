@@ -1,10 +1,13 @@
 import '@src/NewTab.css';
 import '@src/NewTab.scss';
-import { withErrorBoundary, withSuspense } from '@extension/shared';
+import { useStorage, withErrorBoundary, withSuspense } from '@extension/shared';
 
 import { SnackbarProvider, useSnackbar } from 'notistack';
 import { X } from 'lucide-react';
 import { HomePage } from '@src/components/HomePage';
+import { useMemo } from 'react';
+import { pocketCodeStorage } from '@extension/storage/lib/impl/pocketStorage';
+import AuthedPage from '@src/components/AuthedPage';
 
 // @ts-ignore
 function SnackbarCloseButton({ snackbarKey }) {
@@ -18,6 +21,11 @@ function SnackbarCloseButton({ snackbarKey }) {
 }
 
 const NewTab = () => {
+  const pocketStorage = useStorage(pocketCodeStorage);
+  const authed = useMemo(() => {
+    return pocketStorage.state;
+  }, [pocketStorage.state]);
+
   return (
     <SnackbarProvider
       maxSnack={3}
@@ -27,7 +35,7 @@ const NewTab = () => {
         horizontal: 'right',
       }}
       action={snackbarKey => <SnackbarCloseButton snackbarKey={snackbarKey} />}>
-      <HomePage />
+      {authed ? <AuthedPage /> : <HomePage />}
     </SnackbarProvider>
   );
 };
