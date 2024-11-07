@@ -35,7 +35,6 @@ const AuthedPage = () => {
     await chrome.runtime.sendMessage(
       createOmnivore2PocketMessage({
         items: allItems,
-        total: total,
       }),
     );
   };

@@ -25,7 +25,6 @@ export type OmnivoreItem = {
 };
 
 export type Omnivore2PocketMessagePayload = {
-  total: number;
   items: OmnivoreItem[];
 };
 

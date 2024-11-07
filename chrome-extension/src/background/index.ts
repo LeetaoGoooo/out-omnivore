@@ -41,7 +41,6 @@ chrome.runtime.onMessage.addListener(
               return;
             }
           }
-          console.debug(`OMNIVORE_TO_POCKET background execute finished`);
           sendResponse({ status: 'done' });
           break;
       }
@@ -84,7 +83,6 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo) => {
 async function batchAddFileToPockets(payload: Omnivore2PocketMessagePayload) {
   const pocket = new Pocket();
   const token = await pocketCodeStorage.token();
-  const total = payload.total;
   const totalRecords = payload.items.length;
 
   const splitRecords: OmnivoreItem[][] = splitArray<OmnivoreItem>(payload.items, 10);
@@ -92,7 +90,9 @@ async function batchAddFileToPockets(payload: Omnivore2PocketMessagePayload) {
   for (let i = 0; i < len; i++) {
     const omnivoreItems = splitRecords[i];
     try {
-      const items = omnivoreItems.map(item => item.url);
+      const items = omnivoreItems
+        .filter(item => !item.url.startsWith('https://omnivore.app/no_url'))
+        .map(item => item.url);
       try {
         await chrome.runtime.sendMessage({
           type: MessageType.ADD_TO_POCKET_PROCESS,
@@ -132,8 +132,9 @@ async function batchAddFileToPockets(payload: Omnivore2PocketMessagePayload) {
       }
     } catch (e) {
       // @ts-ignore
+      const err = e.toString();
       await chrome.runtime.sendMessage(
-        createSnackBarMessage(`Process ${filename} Add  Items to Pocket Failed, e: ${e.toString()}`, 'error'),
+        createSnackBarMessage(`Process Add  Items to Pocket Failed, e: ${err}`, 'error'),
       );
     }
   }
