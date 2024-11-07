@@ -10,6 +10,7 @@ import { Pocket } from '@src/api/pocket';
 import { RequestFailed } from '@src/api/models/custom-expections';
 import { pocketCodeStorage } from '@extension/storage/lib/impl/pocketStorage';
 import { splitArray } from '@extension/shared/lib/utils';
+import { importStorage } from '@extension/storage/lib/impl/omnivoreStorage';
 
 chrome.runtime.onMessage.addListener(
   (message: Message, sender: chrome.runtime.MessageSender, sendResponse: (response: any) => void) => {
@@ -115,6 +116,15 @@ async function batchAddFileToPockets(payload: Omnivore2PocketMessagePayload) {
       });
       const response = await pocket.batchInsertItems(token!, pocketItem);
       const itemStatus = response.action_results;
+
+      const failedOmnivore: string[] = [];
+      for (let i = 0; i < itemStatus.length; i++) {
+        if (!itemStatus[i]) {
+          failedOmnivore.push(items[i]);
+        }
+      }
+
+      await importStorage.setOmnivores(failedOmnivore);
       try {
         await chrome.runtime.sendMessage({
           type: MessageType.ADD_TO_POCKET_PROCESS,
