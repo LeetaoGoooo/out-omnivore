@@ -7,11 +7,10 @@ import { createOmnivore2PocketMessage, MessageType, OmnivoreItem } from '@extens
 import { readJsonFile } from '@extension/shared/lib/utils';
 
 interface UploadItemProperty {
-  filename: string;
   status: string;
-  finished: number;
   total: number;
   items: string[];
+  loop: number;
   itemStatus?: boolean[];
 }
 
@@ -28,20 +27,17 @@ const AuthedPage = () => {
     }
     const newFiles = Array.from(e.target.files);
     const total = newFiles.length;
-
+    const allItems = [];
     for (let i = 0; i < total; i++) {
       const items = await readJsonFile<OmnivoreItem[]>(newFiles[i]);
-      await chrome.runtime.sendMessage(
-        createOmnivore2PocketMessage({
-          filename: newFiles[i].name,
-          total: total,
-          finished: i,
-          items: items,
-        }),
-      );
-      console.log(`Finished processing file ${i + 1}`); // 记录处理完成
-      await delay(3000);
+      allItems.push(...items);
     }
+    await chrome.runtime.sendMessage(
+      createOmnivore2PocketMessage({
+        items: allItems,
+        total: total,
+      }),
+    );
   };
 
   useEffect(() => {
@@ -99,19 +95,13 @@ const AuthedPage = () => {
                 <div className="text-center text-gray-400 py-4">Waiting for files...</div>
               ) : (
                 <div>
-                  <div className="mb-1 text-base font-medium">
-                    total: {uploadItem.finished}/{uploadItem.total}
-                  </div>
+                  <div className="mb-1 text-base font-medium">total Records: {uploadItem.total}</div>
                   <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
                     <div
                       className="bg-blue-600 h-2.5 rounded-full"
                       style={{
-                        width: `${((uploadItem.finished / uploadItem.total) * 100).toFixed(0)}%`,
+                        width: `${(((uploadItem.loop * 10) / uploadItem.total) * 100).toFixed(0)}%`,
                       }}></div>
-                  </div>
-                  <div>
-                    <span className="text-base font-medium text-gray-600">process:</span>
-                    <span className="ml-2 text-lg font-bold text-blue-600 animate-bounce">{uploadItem.filename}</span>
                   </div>
                   <ul className="space-y-4 text-left text-gray-500 dark:text-gray-400 m-2 h-[360px] overflow-hidden overflow-y-auto">
                     {uploadItem.items.map((item, index) => {

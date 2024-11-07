@@ -4,10 +4,12 @@ import {
   MessageType,
   Omnivore2PocketMessage,
   Omnivore2PocketMessagePayload,
+  OmnivoreItem,
 } from '@extension/shared/lib/message/message';
 import { Pocket } from '@src/api/pocket';
 import { RequestFailed } from '@src/api/models/custom-expections';
 import { pocketCodeStorage } from '@extension/storage/lib/impl/pocketStorage';
+import { splitArray } from '@extension/shared/lib/utils';
 
 chrome.runtime.onMessage.addListener(
   (message: Message, sender: chrome.runtime.MessageSender, sendResponse: (response: any) => void) => {
@@ -83,55 +85,56 @@ async function batchAddFileToPockets(payload: Omnivore2PocketMessagePayload) {
   const pocket = new Pocket();
   const token = await pocketCodeStorage.token();
   const total = payload.total;
-  const filename = payload.filename;
-  const finished = payload.finished;
+  const totalRecords = payload.items.length;
 
-  try {
-    const omnivoreItems = payload.items;
-    const items = omnivoreItems.map(item => item.url);
+  const splitRecords: OmnivoreItem[][] = splitArray<OmnivoreItem>(payload.items, 10);
+  const len = splitRecords.length;
+  for (let i = 0; i < len; i++) {
+    const omnivoreItems = splitRecords[i];
     try {
-      await chrome.runtime.sendMessage({
-        type: MessageType.ADD_TO_POCKET_PROCESS,
-        payload: {
-          filename: filename,
-          status: 'doing',
-          finished: finished,
-          total: total,
-          items: items,
-        },
+      const items = omnivoreItems.map(item => item.url);
+      try {
+        await chrome.runtime.sendMessage({
+          type: MessageType.ADD_TO_POCKET_PROCESS,
+          payload: {
+            status: 'doing',
+            loop: i + 1,
+            total: totalRecords,
+            items: items,
+          },
+        });
+      } catch (e) {
+        console.error(e);
+      }
+      const pocketItem = omnivoreItems.map(item => {
+        return {
+          url: item.url,
+          title: item.title,
+          action: 'add',
+        };
       });
-    } catch (e) {
-      console.error(e);
-    }
-    const pocketItem = omnivoreItems.map(item => {
-      return {
-        url: item.url,
-        title: item.title,
-        action: 'add',
-      };
-    });
-    const response = await pocket.batchInsertItems(token!, pocketItem);
-    const itemStatus = response.action_results;
-    try {
-      await chrome.runtime.sendMessage({
-        type: MessageType.ADD_TO_POCKET_PROCESS,
-        payload: {
-          filename: filename,
-          status: 'done',
-          finished: finished + 1,
-          total: total,
-          items: items,
-          itemStatus: itemStatus,
-        },
-      });
+      const response = await pocket.batchInsertItems(token!, pocketItem);
+      const itemStatus = response.action_results;
+      try {
+        await chrome.runtime.sendMessage({
+          type: MessageType.ADD_TO_POCKET_PROCESS,
+          payload: {
+            status: 'done',
+            total: totalRecords,
+            items: items,
+            loop: i + 1,
+            itemStatus: itemStatus,
+          },
+        });
+      } catch (e) {
+        // @ts-ignore
+        console.error(`ADD_TO_POCKET_PROCESS: ${e.toString()}`);
+      }
     } catch (e) {
       // @ts-ignore
-      console.error(`ADD_TO_POCKET_PROCESS: ${e.toString()}`);
+      await chrome.runtime.sendMessage(
+        createSnackBarMessage(`Process ${filename} Add  Items to Pocket Failed, e: ${e.toString()}`, 'error'),
+      );
     }
-  } catch (e) {
-    // @ts-ignore
-    await chrome.runtime.sendMessage(
-      createSnackBarMessage(`Process ${filename} Add  Items to Pocket Failed, e: ${e.toString()}`, 'error'),
-    );
   }
 }
