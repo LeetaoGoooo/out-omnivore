@@ -2,8 +2,8 @@ import { PocketItemAdd, PocketSendResponse, UserAccessTokenResponse, UserAuthRes
 import { RequestFailed } from '@src/api/models/custom-expections';
 
 export class Pocket {
-  consumerKey = '112693-3ac3620366d6f77fa6b96bc';
-  static redirectUri = 'https://www.leetao.me/posts?application=out-omnivore';
+  consumerKey = import.meta.env.VITE_CONSUMER_KEY;
+  static redirectUri = import.meta.env.VITE_REDIRECT_URI;
 
   async userAuth() {
     const url = 'https://getpocket.com/v3/oauth/request';
